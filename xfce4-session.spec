@@ -1,26 +1,24 @@
-%define oname xfce4-session
-
 %define major 0
 %define apiversion 4.2
 %define libname %mklibname xfsm-%{apiversion}_%{major}
 %define develname %mklibname xfsm -d
 
 Summary:	Xfce Session Manager
-Name:		xfce-session
+Name:		xfce4-session
 Version:	4.4.1
-Release:	%mkrel 11
+Release:	%mkrel 12
 License:	BSD
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
-Source0:	%{oname}-%{version}.tar.bz2 
-Source3:	%{oname}-icons.tar.bz2
+Source0:	%{name}-%{version}.tar.bz2 
+Source3:	%{name}-icons.tar.bz2
 # (saispo) default mandriva theme
-Patch4:		%{oname}-4.4.1-session-options.patch
+Patch4:		%{name}-4.4.1-session-options.patch
 # (tpg) suspend/hibernate session dialog
-Patch5:		%{oname}-4.4.1-suspend-hibernate.patch
-Patch6:		%{oname}-asneeded.patch
-Patch7:		%{oname}-4.4.1-icons.patch
-Patch8:		%{oname}-4.4.1-use-GtkFileChooser.patch
+Patch5:		%{name}-4.4.1-suspend-hibernate.patch
+Patch6:		%{name}-asneeded.patch
+Patch7:		%{name}-4.4.1-icons.patch
+Patch8:		%{name}-4.4.1-use-GtkFileChooser.patch
 BuildRequires:	xfce-mcs-manager-devel >= %{version}
 BuildRequires:	libgdk_pixbuf2.0-devel
 BuildRequires:	perl(XML::Parser)
@@ -33,6 +31,7 @@ Requires:	xfce-mcs-manager >= %{version}
 Requires:	fortune-mod
 Requires:	pm-utils
 Requires:	%{libname} = %{version}-%{release}
+Obsoletes:	xfce-session
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
@@ -45,6 +44,7 @@ And at last it helps you to log out, reboot, and shutdown the system.
 Summary:	Balou splash engine
 Group:		Graphical desktop/Xfce
 Requires:	%{name} = %{version}-%{release}
+Obsoletes:	xfce-session-engines
 
 %description -n %{name}-engines
 Balou is an addidional splash engine for the Xfce.
@@ -67,7 +67,7 @@ Obsoletes:	%mklibname xfsm-%{apiversion}_0 -d
 Libraries and header files for the Xfce Session Manager.
 
 %prep
-%setup -qn %{oname}-%{version} -a 3
+%setup -q -a 3
 %patch4 -p1 -b .mandriva
 %patch5 -p1 -b .logout
 %patch6 -p1
@@ -92,7 +92,7 @@ rm -rf %{buildroot}
 rm -f %{buildroot}/%{_libdir}/xfce4/splash/engines/*.*a \
 	%{buildroot}/%{_libdir}/xfce4/mcs-plugins/*.*a
 
-%find_lang %{oname}
+%find_lang %{name}
 
 %clean
 rm -rf %{buildroot}
@@ -108,7 +108,7 @@ rm -rf %{buildroot}
 %{clean_menus}
 %clean_icon_cache hicolor
 
-%files -f %{oname}.lang
+%files -f %{name}.lang
 %defattr(-,root,root)
 %doc AUTHORS BUGS COPYING ChangeLog ChangeLog.pre-xfce-devel INSTALL NEWS README TODO
 %doc doc/FAQ doc/README.Kiosk doc/C/xfce4* 
