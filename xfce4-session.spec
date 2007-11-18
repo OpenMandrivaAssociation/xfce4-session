@@ -5,12 +5,12 @@
 
 Summary:	Xfce Session Manager
 Name:		xfce4-session
-Version:	4.4.1
-Release:	%mkrel 12
+Version:	4.4.2
+Release:	%mkrel 1
 License:	BSD
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
-Source0:	%{name}-%{version}.tar.bz2 
+Source0:	%{name}-%{version}.tar.bz2
 Source3:	%{name}-icons.tar.bz2
 # (saispo) default mandriva theme
 Patch4:		%{name}-4.4.1-session-options.patch
@@ -35,9 +35,9 @@ Obsoletes:	xfce-session
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
-The session manager allows the user to save sessions and 
-restore them after login. It is capable of saving several 
-different sessions. It comes with three splash screen engines. 
+The session manager allows the user to save sessions and
+restore them after login. It is capable of saving several
+different sessions. It comes with three splash screen engines.
 And at last it helps you to log out, reboot, and shutdown the system.
 
 %package -n %{name}-engines
@@ -62,7 +62,7 @@ Group:		Development/Other
 Requires:	%{libname} = %{version}-%{release}
 Provides:	libxfsm-devel = %{version}-%{release}
 Obsoletes:	%mklibname xfsm-%{apiversion}_0 -d
- 
+
 %description -n %{develname}
 Libraries and header files for the Xfce Session Manager.
 
@@ -86,7 +86,7 @@ Libraries and header files for the Xfce Session Manager.
 
 %install
 rm -rf %{buildroot}
-%makeinstall_std 
+%makeinstall_std
 
 # Remove devel files from plugins
 rm -f %{buildroot}/%{_libdir}/xfce4/splash/engines/*.*a \
@@ -111,7 +111,7 @@ rm -rf %{buildroot}
 %files -f %{name}.lang
 %defattr(-,root,root)
 %doc AUTHORS BUGS COPYING ChangeLog ChangeLog.pre-xfce-devel INSTALL NEWS README TODO
-%doc doc/FAQ doc/README.Kiosk doc/C/xfce4* 
+%doc doc/FAQ doc/README.Kiosk doc/C/xfce4*
 %doc %dir %{_datadir}/xfce4/doc/*/*.html
 %doc %dir %{_datadir}/xfce4/doc/*/images/*
 %dir %{_sysconfdir}/X11/xdg/xfce4-session
@@ -141,7 +141,7 @@ rm -rf %{buildroot}
 
 %files -n %{libname}
 %defattr(-,root,root)
-%{_libdir}/*%{apiversion}.so.%{major}* 
+%{_libdir}/*%{apiversion}.so.%{major}*
 
 %files -n %{develname}
 %defattr(-,root,root)
