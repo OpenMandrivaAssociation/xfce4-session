@@ -7,7 +7,7 @@ Summary:	Xfce Session Manager
 Name:		xfce4-session
 Version:	4.4.2
 Release:	%mkrel 1
-License:	BSD
+License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	%{name}-%{version}.tar.bz2
@@ -25,6 +25,7 @@ BuildRequires:	perl(XML::Parser)
 BuildRequires:	X11-devel
 BuildRequires:	iceauth
 BuildRequires:	dbus-glib-devel
+BuildRequires:	libGConf2-devel
 Requires:	xfce-mcs-manager >= %{version}
 #Requires:	usermode-consoleonly
 # (tpg) this satisfies xfce tips&tricks
@@ -110,7 +111,7 @@ rm -rf %{buildroot}
 
 %files -f %{name}.lang
 %defattr(-,root,root)
-%doc AUTHORS BUGS COPYING ChangeLog ChangeLog.pre-xfce-devel INSTALL NEWS README TODO
+%doc AUTHORS BUGS ChangeLog ChangeLog.pre-xfce-devel NEWS README TODO
 %doc doc/FAQ doc/README.Kiosk doc/C/xfce4*
 %doc %dir %{_datadir}/xfce4/doc/*/*.html
 %doc %dir %{_datadir}/xfce4/doc/*/images/*
