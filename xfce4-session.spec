@@ -6,16 +6,16 @@
 Summary:	Xfce Session Manager
 Name:		xfce4-session
 Version:	4.4.2
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	%{name}-%{version}.tar.bz2
-Source3:	%{name}-icons.tar.bz2
+Source1:	%{name}-icons.tar.bz2
+# (saispo) logout dialogbox patch from Xubuntu
+Patch0:         xfce4-session-4.4.1-logout_dialog.patch
 # (saispo) default mandriva theme
 Patch4:		%{name}-4.4.1-session-options.patch
-# (tpg) suspend/hibernate session dialog
-Patch5:		%{name}-4.4.1-suspend-hibernate.patch
 Patch6:		%{name}-asneeded.patch
 Patch7:		%{name}-4.4.1-icons.patch
 Patch8:		%{name}-4.4.1-use-GtkFileChooser.patch
@@ -68,11 +68,11 @@ Obsoletes:	%mklibname xfsm-%{apiversion}_0 -d
 Libraries and header files for the Xfce Session Manager.
 
 %prep
-%setup -q -a 3
+%setup -q -a 1
+%patch0 -p1
 %patch4 -p1 -b .mandriva
-%patch5 -p1 -b .logout
 %patch6 -p1
-%patch7 -p1
+%patch7 -p0
 %patch8 -p1
 
 %build
@@ -88,6 +88,9 @@ Libraries and header files for the Xfce Session Manager.
 %install
 rm -rf %{buildroot}
 %makeinstall_std
+
+# Copy addons icons for autostart and about
+#cp -f %{buildroot}/icons-addons/*/xfce* %{buildroot}/%{_datadir}/icons/*/*/apps/
 
 # Remove devel files from plugins
 rm -f %{buildroot}/%{_libdir}/xfce4/splash/engines/*.*a \
