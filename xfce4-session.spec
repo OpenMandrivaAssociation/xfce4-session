@@ -6,7 +6,7 @@
 Summary:	Xfce Session Manager
 Name:		xfce4-session
 Version:	4.4.2
-Release:	%mkrel 3
+Release:	%mkrel 4
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -78,7 +78,8 @@ Libraries and header files for the Xfce Session Manager.
 %build
 %configure2_5x \
 	--sysconfdir=%{_sysconfdir}/X11 \
-	--enable-final \
+	--with-shutdown-style=hal \
+        --enable-final \
 	--enable-gnome \
 	--enable-dbus \
 	--enable-session-screenshots \
