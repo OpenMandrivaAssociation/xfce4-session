@@ -82,7 +82,7 @@ Libraries and header files for the Xfce Session Manager.
 	--enable-gnome \
 	--enable-dbus \
 	--enable-session-screenshots \
-	--disable-legacy-sm
+	--enable-legacy-sm
 %make
 
 %install
