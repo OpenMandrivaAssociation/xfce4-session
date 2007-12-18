@@ -6,7 +6,7 @@
 Summary:	Xfce Session Manager
 Name:		xfce4-session
 Version:	4.4.2
-Release:	%mkrel 4
+Release:	%mkrel 5
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -17,7 +17,7 @@ Patch0:         xfce4-session-4.4.1-logout_dialog.patch
 # (saispo) default mandriva theme
 Patch4:		%{name}-4.4.1-session-options.patch
 Patch6:		%{name}-asneeded.patch
-Patch7:		%{name}-4.4.1-icons.patch
+Patch7:		%{name}-4.4.2-icons.patch
 Patch8:		%{name}-4.4.1-use-GtkFileChooser.patch
 BuildRequires:	xfce-mcs-manager-devel >= %{version}
 BuildRequires:	libgdk_pixbuf2.0-devel
@@ -71,7 +71,7 @@ Libraries and header files for the Xfce Session Manager.
 %patch0 -p1
 %patch4 -p1 -b .mandriva
 %patch6 -p1
-%patch7 -p0
+%patch7 -p1
 %patch8 -p1
 
 %build
