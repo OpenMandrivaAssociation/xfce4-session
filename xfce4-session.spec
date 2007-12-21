@@ -33,6 +33,7 @@ Requires:	fortune-mod
 Requires:	pm-utils
 Requires:	%{libname} = %{version}-%{release}
 Obsoletes:	xfce-session
+BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 The session manager allows the user to save sessions and
