@@ -1,12 +1,12 @@
 %define major 0
 %define apiversion 4.2
-%define libname %mklibname xfsm-%{apiversion} %{major}
+%define libname %mklibname xfsm-%{apiversion}_%{major}
 %define develname %mklibname xfsm -d
 
 Summary:	Xfce Session Manager
 Name:		xfce4-session
 Version:	4.4.2
-Release:	%mkrel 6
+Release:	%mkrel 7
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -53,6 +53,7 @@ Balou is an addidional splash engine for the Xfce.
 %package -n %{libname}
 Summary:	Libraries for the Xfce Session Manager
 Group:		Graphical desktop/Xfce
+Obsoletes:	%mklibname xfsm-%{apiversion}0
 
 %description -n %{libname}
 Libraries for xfce-session manager
