@@ -1,6 +1,6 @@
 %define major 0
 %define apiversion 4.2
-%define libname %mklibname xfsm-%{apiversion}_%{major}
+%define libname %mklibname xfsm-%{apiversion} %{major}
 %define develname %mklibname xfsm -d
 
 Summary:	Xfce Session Manager
@@ -13,7 +13,7 @@ URL:		http://www.xfce.org
 Source0:	%{name}-%{version}.tar.bz2
 Source1:	%{name}-icons.tar.bz2
 # (saispo) logout dialogbox patch from Xubuntu
-Patch0:         xfce4-session-4.4.1-logout_dialog.patch
+Patch0:         %{name}-4.4.1-logout_dialog.patch
 # (saispo) default mandriva theme
 Patch4:		%{name}-4.4.1-session-options.patch
 Patch6:		%{name}-asneeded.patch
@@ -41,13 +41,13 @@ restore them after login. It is capable of saving several
 different sessions. It comes with three splash screen engines.
 And at last it helps you to log out, reboot, and shutdown the system.
 
-%package -n %{name}-engines
+%package engines
 Summary:	Balou splash engine
 Group:		Graphical desktop/Xfce
 Requires:	%{name} = %{version}-%{release}
 Obsoletes:	xfce-session-engines
 
-%description -n %{name}-engines
+%description engines
 Balou is an addidional splash engine for the Xfce.
 
 %package -n %{libname}
@@ -90,9 +90,6 @@ Libraries and header files for the Xfce Session Manager.
 rm -rf %{buildroot}
 %makeinstall_std
 
-# Copy addons icons for autostart and about
-#cp -f %{buildroot}/icons-addons/*/xfce* %{buildroot}/%{_datadir}/icons/*/*/apps/
-
 # Remove devel files from plugins
 rm -f %{buildroot}/%{_libdir}/xfce4/splash/engines/*.*a \
 	%{buildroot}/%{_libdir}/xfce4/mcs-plugins/*.*a
@@ -126,8 +123,7 @@ rm -rf %{buildroot}
 %exclude %{_sysconfdir}/X11/xdg/autostart/xfce4-tips-autostart.desktop
 %{_bindir}/*
 %{_datadir}/applications/xfce*
-%{_datadir}/icons/*/*/apps/xfce*
-%{_datadir}/icons/*/*/*/xfsm*
+%{_iconsdir}/hicolor/*/apps/*
 %{_datadir}/xfce4/tips/tips*
 %{_libdir}/xfce4/mcs-plugins/*.so
 %{_libdir}/xfce4/splash/engines/libmice.so
@@ -135,7 +131,7 @@ rm -rf %{buildroot}
 %{_libdir}/xfsm-shutdown-helper
 %{_mandir}/man1/*
 
-%files -n %{name}-engines
+%files engines
 %defattr(-,root,root)
 %dir %{_datadir}/themes/Default/balou
 %{_libdir}/balou-export-theme
