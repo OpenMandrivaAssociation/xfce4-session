@@ -122,8 +122,13 @@ rm -rf %{buildroot}
 %dir %{_sysconfdir}/X11/xdg/xfce4-session
 %dir %{_datadir}/themes
 %dir %{_datadir}/themes/Default
+%if %mdkversion < 200900
 %config(noreplace) %{_sysconfdir}/X11/xdg/xfce4-session/xfce4-session.rc
 %exclude %{_sysconfdir}/X11/xdg/autostart/xfce4-tips-autostart.desktop
+%else
+%config(noreplace) %{_sysconfdir}/xdg/xfce4-session/xfce4-session.rc
+%exclude %{_sysconfdir}/xdg/autostart/xfce4-tips-autostart.desktop
+%endif
 %{_bindir}/*
 %{_datadir}/applications/xfce*
 %{_iconsdir}/hicolor/*/apps/*
