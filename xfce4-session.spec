@@ -119,13 +119,14 @@ rm -rf %{buildroot}
 %doc doc/FAQ doc/README.Kiosk doc/C/xfce4*
 %doc %dir %{_datadir}/xfce4/doc/*/*.html
 %doc %dir %{_datadir}/xfce4/doc/*/images/*
-%dir %{_sysconfdir}/X11/xdg/xfce4-session
 %dir %{_datadir}/themes
 %dir %{_datadir}/themes/Default
 %if %mdkversion < 200900
+%dir %{_sysconfdir}/X11/xdg/xfce4-session
 %config(noreplace) %{_sysconfdir}/X11/xdg/xfce4-session/xfce4-session.rc
 %exclude %{_sysconfdir}/X11/xdg/autostart/xfce4-tips-autostart.desktop
 %else
+%dir %{_sysconfdir}/xdg/xfce4-session
 %config(noreplace) %{_sysconfdir}/xdg/xfce4-session/xfce4-session.rc
 %exclude %{_sysconfdir}/xdg/autostart/xfce4-tips-autostart.desktop
 %endif
