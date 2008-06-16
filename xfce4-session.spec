@@ -29,7 +29,7 @@ BuildRequires:	libGConf2-devel
 Requires:	xfce-mcs-manager >= %{version}
 #Requires:	usermode-consoleonly
 # (tpg) this satisfies xfce tips&tricks
-Requires:	fortune-mod
+Suggests:	fortune-mod
 Requires:	pm-utils
 Requires:	%{libname} = %{version}-%{release}
 Obsoletes:	xfce-session
