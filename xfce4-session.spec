@@ -26,6 +26,9 @@ BuildRequires:	X11-devel
 BuildRequires:	iceauth
 BuildRequires:	dbus-glib-devel
 BuildRequires:	libGConf2-devel
+# for patch 6
+BuildRequires:	intltool
+BuildRequires:	xfce4-dev-tools
 Requires:	xfce-mcs-manager >= %{version}
 #Requires:	usermode-consoleonly
 # (tpg) this satisfies xfce tips&tricks
@@ -77,6 +80,9 @@ Libraries and header files for the Xfce Session Manager.
 %patch8 -p1
 
 %build
+# for patch 6
+NOCONFIGURE=1 xdt-autogen
+
 %configure2_5x \
 %if %mdkversion < 200900
 	--sysconfdir=%{_sysconfdir}/X11 \
