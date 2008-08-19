@@ -19,6 +19,8 @@ Patch4:		%{name}-4.4.1-session-options.patch
 Patch6:		%{name}-asneeded.patch
 Patch7:		%{name}-4.4.2-icons.patch
 Patch8:		%{name}-4.4.1-use-GtkFileChooser.patch
+# (tpg) http://bugzilla.xfce.org/show_bug.cgi?id=3007
+Patch9:		%{name}-4.4.2-gnome-keyring-compat.patch
 BuildRequires:	xfce-mcs-manager-devel >= %{version}
 BuildRequires:	libgdk_pixbuf2.0-devel
 BuildRequires:	perl(XML::Parser)
@@ -26,9 +28,11 @@ BuildRequires:	X11-devel
 BuildRequires:	iceauth
 BuildRequires:	dbus-glib-devel
 BuildRequires:	libGConf2-devel
-# for patch 6
+# (tpg) for patch 6
 BuildRequires:	intltool
 BuildRequires:	xfce4-dev-tools
+# (tpg) needed by patch 9
+BuildRequires:	libgnome-keyring-devel >= 2.22
 Requires:	xfce-mcs-manager >= %{version}
 #Requires:	usermode-consoleonly
 # (tpg) this satisfies xfce tips&tricks
@@ -78,9 +82,10 @@ Libraries and header files for the Xfce Session Manager.
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 %build
-# for patch 6
+# (tpg) for patch 6 and 9
 NOCONFIGURE=1 xdt-autogen
 
 %configure2_5x \
