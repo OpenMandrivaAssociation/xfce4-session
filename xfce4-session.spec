@@ -6,7 +6,7 @@
 Summary:	Xfce Session Manager
 Name:		xfce4-session
 Version:	4.4.2
-Release:	%mkrel 10
+Release:	%mkrel 11
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -21,6 +21,7 @@ Patch7:		%{name}-4.4.2-icons.patch
 Patch8:		%{name}-4.4.1-use-GtkFileChooser.patch
 # (tpg) http://bugzilla.xfce.org/show_bug.cgi?id=3007
 Patch9:		%{name}-4.4.2-gnome-keyring-compat.patch
+Patch10:	%{name}-4.4.2-speed-up-startup.patch
 BuildRequires:	xfce-mcs-manager-devel >= %{version}
 BuildRequires:	libgdk_pixbuf2.0-devel
 BuildRequires:	perl(XML::Parser)
@@ -83,6 +84,7 @@ Libraries and header files for the Xfce Session Manager.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
 
 %build
 # (tpg) for patch 6 and 9
