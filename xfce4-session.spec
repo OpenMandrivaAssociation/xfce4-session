@@ -22,6 +22,8 @@ Patch8:		%{name}-4.4.1-use-GtkFileChooser.patch
 # (tpg) http://bugzilla.xfce.org/show_bug.cgi?id=3007
 Patch9:		%{name}-4.4.2-gnome-keyring-compat.patch
 Patch10:	%{name}-4.4.2-speed-up-startup.patch
+Patch11:	%{name}-4.4.2-use-dbus-glib.patch
+Patch12:	%{name}-4.4.2-update-translations.patch
 BuildRequires:	xfce-mcs-manager-devel >= %{version}
 BuildRequires:	libgdk_pixbuf2.0-devel
 BuildRequires:	perl(XML::Parser)
@@ -39,6 +41,7 @@ Requires:	xfce-mcs-manager >= %{version}
 # (tpg) this satisfies xfce tips&tricks
 Suggests:	fortune-mod
 Requires:	pm-utils
+Suggests:	sudo
 Requires:	%{libname} = %{version}-%{release}
 Obsoletes:	xfce-session
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
@@ -85,9 +88,11 @@ Libraries and header files for the Xfce Session Manager.
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
+%patch12 -p1
 
 %build
-# (tpg) for patch 6 and 9
+# (tpg) for patch 6 and 9 and 11
 NOCONFIGURE=1 xdt-autogen
 
 %configure2_5x \
