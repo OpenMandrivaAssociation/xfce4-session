@@ -6,7 +6,7 @@
 Summary:	Xfce Session Manager
 Name:		xfce4-session
 Version:	4.4.2
-Release:	%mkrel 13
+Release:	%mkrel 14
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -41,6 +41,7 @@ Requires:	xfce-mcs-manager >= %{version}
 # (tpg) this satisfies xfce tips&tricks
 Suggests:	fortune-mod
 Requires:	pm-utils
+Requires:	policykit-gnome
 Suggests:	sudo
 Requires:	%{libname} = %{version}-%{release}
 Obsoletes:	xfce-session
