@@ -97,7 +97,8 @@ Libraries and header files for the Xfce Session Manager.
 	--enable-gnome \
 	--enable-session-screenshots \
 	--enable-legacy-sm \
-	--enable-libgnome-keyring
+	--enable-libgnome-keyring \
+	--disable-static
 %make
 
 %install
@@ -170,6 +171,6 @@ rm -rf %{buildroot}
 %files -n %{develname}
 %defattr(-,root,root)
 %{_libdir}/lib*.so
-%{_libdir}/*.*a
+%{_libdir}/*.la
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/xfce4/xfce4-session-%{apiver}
