@@ -17,7 +17,6 @@ Patch4:		%{name}-4.4.1-session-options.patch
 Patch6:		%{name}-asneeded.patch
 Patch7:		%{name}-4.4.2-icons.patch
 Patch8:		%{name}-4.4.1-use-GtkFileChooser.patch
-Patch12:	%{name}-4.4.2-update-translations.patch
 BuildRequires:	libgdk_pixbuf2.0-devel
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	X11-devel
@@ -32,14 +31,15 @@ BuildRequires:	libwnck-devel
 Buildrequires:	xfconf-devel
 # (tpg) needed by patch 9
 BuildRequires:	libgnome-keyring-devel >= 2.22
-#Requires:	usermode-consoleonly
+Requires:	usermode-consoleonly
 # (tpg) this satisfies xfce tips&tricks
 Suggests:	fortune-mod
+%if %mdkversion <= 200900
 Requires:	pm-utils
+%endif
 Requires:	policykit-gnome
-Suggests:	sudo
 Requires:	%{libname} = %{version}-%{release}
-Obsoletes:	xfce-session
+Obsoletes:	xfce-session < 4.5.91
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
