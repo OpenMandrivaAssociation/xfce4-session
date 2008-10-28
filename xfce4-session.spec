@@ -17,7 +17,6 @@ Patch4:		%{name}-4.4.1-session-options.patch
 Patch6:		%{name}-asneeded.patch
 Patch7:		%{name}-4.4.2-icons.patch
 Patch8:		%{name}-4.4.1-use-GtkFileChooser.patch
-BuildRequires:	libgdk_pixbuf2.0-devel
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	X11-devel
 BuildRequires:	iceauth
