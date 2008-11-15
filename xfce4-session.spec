@@ -5,7 +5,7 @@
 
 Summary:	Xfce Session Manager
 Name:		xfce4-session
-Version:	4.5.91
+Version:	4.5.92
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
@@ -24,10 +24,10 @@ BuildRequires:	dbus-glib-devel
 BuildRequires:	libGConf2-devel
 # (tpg) for patch 6
 BuildRequires:	intltool
-BuildRequires:	libxfcegui4-devel
+BuildRequires:	libxfcegui4-devel >= %{version}
 BuildRequires:	libglade2-devel
 BuildRequires:	libwnck-devel
-Buildrequires:	xfconf-devel
+Buildrequires:	xfconf-devel >= %{version}
 # (tpg) needed by patch 9
 BuildRequires:	libgnome-keyring-devel >= 2.22
 Requires:	usermode-consoleonly
