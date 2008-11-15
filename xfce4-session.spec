@@ -10,7 +10,7 @@ Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
-Source0:	%{name}-%{version}.tar.bz2
+Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{name}-%{version}.tar.bz2
 Source1:	%{name}-icons.tar.bz2
 # (saispo) default mandriva theme
 Patch4:		%{name}-4.4.1-session-options.patch
