@@ -6,7 +6,7 @@
 Summary:	Xfce Session Manager
 Name:		xfce4-session
 Version:	4.5.92
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -33,6 +33,7 @@ Suggests:	fortune-mod
 Requires:	pm-utils
 %endif
 Requires:	policykit-gnome
+Requires(pre):	mandriva-xfce-config
 Requires(post):	mandriva-xfce-config
 Requires:	%{libname} = %{version}-%{release}
 Obsoletes:	xfce-session < 4.5.91
