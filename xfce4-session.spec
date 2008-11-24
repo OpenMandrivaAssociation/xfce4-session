@@ -6,16 +6,12 @@
 Summary:	Xfce Session Manager
 Name:		xfce4-session
 Version:	4.5.92
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{name}-%{version}.tar.bz2
-Source1:	%{name}-icons.tar.bz2
-# (saispo) default mandriva theme
-Patch4:		%{name}-4.4.1-session-options.patch
 Patch6:		%{name}-asneeded.patch
-Patch7:		%{name}-4.4.2-icons.patch
 Patch8:		%{name}-4.4.1-use-GtkFileChooser.patch
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	X11-devel
@@ -37,6 +33,7 @@ Suggests:	fortune-mod
 Requires:	pm-utils
 %endif
 Requires:	policykit-gnome
+Requires(post):	mandriva-xfce-config
 Requires:	%{libname} = %{version}-%{release}
 Obsoletes:	xfce-session < 4.5.91
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
@@ -76,11 +73,8 @@ Obsoletes:	%mklibname xfsm-%{apiver}_0 -d
 Libraries and header files for the Xfce Session Manager.
 
 %prep
-%setup -q -a 1
-#patch0 -p1
-#patch4 -p1 -b .mandriva
+%setup -q
 #patch6 -p1
-#patch7 -p1
 #patch8 -p1
 
 %build
@@ -144,7 +138,7 @@ rm -rf %{buildroot}
 %else
 %exclude %{_sysconfdir}/xdg/autostart/xfce4-tips-autostart.desktop
 %endif
-%{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
+%exclude %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
 %{_bindir}/*
 %{_datadir}/applications/xfce*
 %{_iconsdir}/hicolor/*/apps/*
