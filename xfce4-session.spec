@@ -13,8 +13,6 @@ URL:		http://www.xfce.org
 Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{name}-%{version}.tar.bz2
 Patch0:		xfce4-session-4.6.0-dont-crash-when-null-ponter-is-passed.patch
 Patch1:		xfce4-session-4.6.0-fix-default-value-for-enabletcp.patch
-Patch6:		%{name}-asneeded.patch
-Patch8:		%{name}-4.4.1-use-GtkFileChooser.patch
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	X11-devel
 BuildRequires:	iceauth
