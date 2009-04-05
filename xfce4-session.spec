@@ -6,11 +6,13 @@
 Summary:	Xfce Session Manager
 Name:		xfce4-session
 Version:	4.6.0
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{name}-%{version}.tar.bz2
+Patch0:		xfce4-session-4.6.0-dont-crash-when-null-ponter-is-passed.patch
+Patch1:		xfce4-session-4.6.0-fix-default-value-for-enabletcp.patch
 Patch6:		%{name}-asneeded.patch
 Patch8:		%{name}-4.4.1-use-GtkFileChooser.patch
 BuildRequires:	perl(XML::Parser)
@@ -75,14 +77,10 @@ Libraries and header files for the Xfce Session Manager.
 
 %prep
 %setup -q
-#patch6 -p1
-#patch8 -p1
+%patch0 -p1
+%patch1 -p1
 
 %build
-# (tpg) for patch 6 and 9 and 11
-#NOCONFIGURE=1 xdt-autogen
-%define _disable_ld_no_undefined 1
-
 %configure2_5x \
 %if %mdkversion < 200900
 	--sysconfdir=%{_sysconfdir}/X11 \
