@@ -5,14 +5,12 @@
 
 Summary:	Xfce Session Manager
 Name:		xfce4-session
-Version:	4.6.0
-Release:	%mkrel 3
+Version:	4.6.1
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{name}-%{version}.tar.bz2
-Patch0:		xfce4-session-4.6.0-dont-crash-when-null-ponter-is-passed.patch
-Patch1:		xfce4-session-4.6.0-fix-default-value-for-enabletcp.patch
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	X11-devel
 BuildRequires:	iceauth
@@ -20,10 +18,10 @@ BuildRequires:	dbus-glib-devel
 BuildRequires:	libGConf2-devel
 # (tpg) for patch 6
 BuildRequires:	intltool
-BuildRequires:	libxfcegui4-devel >= %{version}
+BuildRequires:	libxfcegui4-devel >= 4.6.0
 BuildRequires:	libglade2-devel
 BuildRequires:	libwnck-devel
-Buildrequires:	xfconf-devel >= %{version}
+Buildrequires:	xfconf-devel >= 4.6.0
 # (tpg) needed by patch 9
 BuildRequires:	libgnome-keyring-devel >= 2.22
 Requires:	usermode-consoleonly
@@ -75,8 +73,6 @@ Libraries and header files for the Xfce Session Manager.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 %configure2_5x \
