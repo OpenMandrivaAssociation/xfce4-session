@@ -1,3 +1,5 @@
+%define url_ver %(echo %{version} | cut -c 1-3)
+
 %define major 0
 %define apiver 4.6
 %define libname %mklibname xfsm-%{apiver}_%{major}
@@ -5,12 +7,12 @@
 
 Summary:	Xfce Session Manager
 Name:		xfce4-session
-Version:	4.6.2
+Version:	4.7.0
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
-Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{name}-%{version}.tar.bz2
+Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
 # (tpg) fix gnome-keyring support
 # http://bugzilla.xfce.org/show_bug.cgi?id=5912
 Patch0:		xfce4-session-4.6.1-fix_gnome_keyring_support.patch
@@ -21,12 +23,18 @@ BuildRequires:	dbus-glib-devel
 BuildRequires:	libGConf2-devel
 # (tpg) for patch 6
 BuildRequires:	intltool
-BuildRequires:	libxfcegui4-devel >= 4.6.0
+BuildRequires:	libxfce4ui-devel >= 4.7.0
+BuildRequires:	libxfce4util-devel >= 4.7.0
 BuildRequires:	libglade2-devel
 BuildRequires:	libwnck-devel
-Buildrequires:	xfconf-devel >= 4.6.0
+Buildrequires:	xfconf-devel >= 4.7.0
 # (tpg) needed by patch 9
 BuildRequires:	libgnome-keyring-devel >= 2.22
+BuildRequires:	consolekit-devel
+BuildRequires:	UPower-devel
+BuildRequires:	polkit-devel
+BuildRequires:	xfce4-panel-devel >= 4.7.0
+BuildRequires:	hal-devel
 Requires:	usermode-consoleonly
 # (tpg) this satisfies xfce tips&tricks
 Suggests:	fortune-mod
@@ -76,14 +84,13 @@ Libraries and header files for the Xfce Session Manager.
 
 %prep
 %setup -q
-%patch0 -p1
+#%patch0 -p1
 
 %build
 %configure2_5x \
 %if %mdkversion < 200900
 	--sysconfdir=%{_sysconfdir}/X11 \
 %endif
-        --enable-final \
 	--enable-gnome \
 	--enable-session-screenshots \
 	--enable-legacy-sm \
@@ -96,7 +103,7 @@ rm -rf %{buildroot}
 %makeinstall_std
 
 # Remove devel files from plugins
-rm -f %{buildroot}/%{_libdir}/xfce4/splash/engines/*.*a
+rm -f %{buildroot}%{_libdir}/xfce4/splash/engines/*.*a
 
 %find_lang %{name}
 
@@ -124,10 +131,8 @@ rm -rf %{buildroot}
 
 %files -f %{name}.lang
 %defattr(-,root,root)
-%doc AUTHORS BUGS ChangeLog ChangeLog.pre-xfce-devel NEWS README TODO
-%doc doc/FAQ doc/README.Kiosk doc/C/xfce4*
-%doc %dir %{_datadir}/xfce4/doc/*/*.html
-%doc %dir %{_datadir}/xfce4/doc/*/images/*
+%doc AUTHORS BUGS ChangeLog NEWS README TODO
+%doc doc/FAQ doc/README.Kiosk
 %dir %{_datadir}/themes
 %dir %{_datadir}/themes/Default
 %if %mdkversion < 200900
@@ -139,18 +144,20 @@ rm -rf %{buildroot}
 %{_bindir}/*
 %{_datadir}/applications/xfce*
 %{_iconsdir}/hicolor/*/apps/*
-%{_datadir}/xfce4/tips/tips*
-%{_libdir}/xfce4/splash/engines/libmice.so
-%{_libdir}/xfce4/splash/engines/libsimple.so
-%{_libdir}/xfsm-shutdown-helper
+%{_datadir}/xfce4/tips/tips
+%{_datadir}/xfce4/panel-plugins/xfsm-*.desktop
+%{_libdir}/xfce4/panel/plugins/libxfsm-*
+%{_libdir}/xfce4/session/splash-engines/libmice.*
+%{_libdir}/xfce4/session/splash-engines/libsimple.*
+%{_libdir}/xfce4/session/xfsm-shutdown-helper
 %{_mandir}/man1/*
 
 %files engines
 %defattr(-,root,root)
 %dir %{_datadir}/themes/Default/balou
-%{_libdir}/balou-export-theme
-%{_libdir}/balou-install-theme
-%{_libdir}/xfce4/splash/engines/libbalou.so
+%{_libdir}/xfce4/session/balou-export-theme
+%{_libdir}/xfce4/session//balou-install-theme
+%{_libdir}/xfce4/session/splash-engines/libbalou.*
 %{_datadir}/themes/Default/balou/logo.png
 %{_datadir}/themes/Default/balou/themerc
 
