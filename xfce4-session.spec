@@ -8,7 +8,7 @@
 Summary:	Xfce Session Manager
 Name:		xfce4-session
 Version:	4.7.0
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -16,6 +16,7 @@ Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.
 # (tpg) fix gnome-keyring support
 # http://bugzilla.xfce.org/show_bug.cgi?id=5912
 Patch0:		xfce4-session-4.6.1-fix_gnome_keyring_support.patch
+Patch1:		xfce4-session-4.7.0-reuse-existing-ConsoleKit-sessions.patch
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	X11-devel
 BuildRequires:	iceauth
@@ -85,6 +86,7 @@ Libraries and header files for the Xfce Session Manager.
 %prep
 %setup -q
 #%patch0 -p1
+%patch1 -p1
 
 %build
 %configure2_5x \
