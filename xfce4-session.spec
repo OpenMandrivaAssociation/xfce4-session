@@ -7,8 +7,8 @@
 
 Summary:	Xfce Session Manager
 Name:		xfce4-session
-Version:	4.7.0
-Release:	%mkrel 2
+Version:	4.7.1
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -39,9 +39,6 @@ BuildRequires:	hal-devel
 Requires:	usermode-consoleonly
 # (tpg) this satisfies xfce tips&tricks
 Suggests:	fortune-mod
-%if %mdkversion <= 200900
-Requires:	pm-utils
-%endif
 Requires:	policykit-gnome
 Requires(pre):	mandriva-xfce-config
 Requires(post):	mandriva-xfce-config
@@ -86,13 +83,10 @@ Libraries and header files for the Xfce Session Manager.
 %prep
 %setup -q
 #%patch0 -p1
-%patch1 -p1
+#%patch1 -p1
 
 %build
 %configure2_5x \
-%if %mdkversion < 200900
-	--sysconfdir=%{_sysconfdir}/X11 \
-%endif
 	--enable-gnome \
 	--enable-session-screenshots \
 	--enable-legacy-sm \
@@ -107,29 +101,14 @@ rm -rf %{buildroot}
 # Remove devel files from plugins
 rm -f %{buildroot}%{_libdir}/xfce4/splash/engines/*.*a
 
+# (tpg) this file is in mandriva-xfce-config package
+rm -rf %{buildroot}%{_sysconfdir}/xdg/autostart/xfce4-tips-autostart.desktop
+rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
+
 %find_lang %{name}
 
 %clean
 rm -rf %{buildroot}
-
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
-
-%if %mdkversion < 200900
-%post
-%{update_menus}
-%update_icon_cache hicolor
-%endif
-
-%if %mdkversion < 200900
-%postun
-%{clean_menus}
-%clean_icon_cache hicolor
-%endif
 
 %files -f %{name}.lang
 %defattr(-,root,root)
@@ -137,12 +116,6 @@ rm -rf %{buildroot}
 %doc doc/FAQ doc/README.Kiosk
 %dir %{_datadir}/themes
 %dir %{_datadir}/themes/Default
-%if %mdkversion < 200900
-%exclude %{_sysconfdir}/X11/xdg/autostart/xfce4-tips-autostart.desktop
-%else
-%exclude %{_sysconfdir}/xdg/autostart/xfce4-tips-autostart.desktop
-%endif
-%exclude %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
 %{_bindir}/*
 %{_datadir}/applications/xfce*
 %{_iconsdir}/hicolor/*/apps/*
