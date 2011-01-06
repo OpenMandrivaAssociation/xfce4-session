@@ -7,7 +7,7 @@
 
 Summary:	Xfce Session Manager
 Name:		xfce4-session
-Version:	4.7.2
+Version:	4.7.3
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
