@@ -7,7 +7,7 @@
 
 Summary:	Xfce Session Manager
 Name:		xfce4-session
-Version:	4.7.3
+Version:	4.8.0
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
@@ -120,8 +120,6 @@ rm -rf %{buildroot}
 %{_datadir}/applications/xfce*
 %{_iconsdir}/hicolor/*/apps/*
 %{_datadir}/xfce4/tips/tips
-%{_datadir}/xfce4/panel-plugins/xfsm-*.desktop
-%{_libdir}/xfce4/panel/plugins/libxfsm-*
 %{_libdir}/xfce4/session/splash-engines/libmice.*
 %{_libdir}/xfce4/session/splash-engines/libsimple.*
 %{_libdir}/xfce4/session/xfsm-shutdown-helper
