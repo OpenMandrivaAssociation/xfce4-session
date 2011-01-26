@@ -24,8 +24,8 @@ BuildRequires:	dbus-glib-devel
 BuildRequires:	libGConf2-devel
 # (tpg) for patch 6
 BuildRequires:	intltool
-BuildRequires:	libxfce4ui-devel >= 4.7.0
-BuildRequires:	libxfce4util-devel >= 4.7.0
+BuildRequires:	libxfce4ui-devel >= 4.8.0
+BuildRequires:	libxfce4util-devel >= 4.8.0
 BuildRequires:	libglade2-devel
 BuildRequires:	libwnck-devel
 Buildrequires:	xfconf-devel >= 4.7.0
@@ -34,7 +34,7 @@ BuildRequires:	libgnome-keyring-devel >= 2.22
 BuildRequires:	consolekit-devel
 BuildRequires:	UPower-devel
 BuildRequires:	polkit-devel
-BuildRequires:	xfce4-panel-devel >= 4.7.0
+BuildRequires:	xfce4-panel-devel >= 4.8.0
 BuildRequires:	hal-devel
 Requires:	usermode-consoleonly
 # (tpg) this satisfies xfce tips&tricks
@@ -120,6 +120,8 @@ rm -rf %{buildroot}
 %{_datadir}/applications/xfce*
 %{_iconsdir}/hicolor/*/apps/*
 %{_datadir}/xfce4/tips/tips
+%{_datadir}/xfce4/panel-plugins/xfsm-*.desktop
+%{_libdir}/xfce4/panel/plugins/libxfsm-*
 %{_libdir}/xfce4/session/splash-engines/libmice.*
 %{_libdir}/xfce4/session/splash-engines/libsimple.*
 %{_libdir}/xfce4/session/xfsm-shutdown-helper
