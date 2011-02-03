@@ -8,7 +8,7 @@
 Summary:	Xfce Session Manager
 Name:		xfce4-session
 Version:	4.8.0
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -18,7 +18,9 @@ Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.
 Patch0:		xfce4-session-4.6.1-fix_gnome_keyring_support.patch
 Patch1:		xfce4-session-4.7.0-reuse-existing-ConsoleKit-sessions.patch
 BuildRequires:	perl(XML::Parser)
-BuildRequires:	X11-devel
+BuildRequires:	libx11-devel
+BuildRequires:	libice-devel
+BuildRequires:	libsm-devel
 BuildRequires:	iceauth
 BuildRequires:	dbus-glib-devel
 BuildRequires:	libGConf2-devel
@@ -26,16 +28,12 @@ BuildRequires:	libGConf2-devel
 BuildRequires:	intltool
 BuildRequires:	libxfce4ui-devel >= 4.8.0
 BuildRequires:	libxfce4util-devel >= 4.8.0
-BuildRequires:	libglade2-devel
 BuildRequires:	libwnck-devel
 Buildrequires:	xfconf-devel >= 4.7.0
 # (tpg) needed by patch 9
 BuildRequires:	libgnome-keyring-devel >= 2.22
 BuildRequires:	consolekit-devel
-BuildRequires:	UPower-devel
-BuildRequires:	polkit-devel
 BuildRequires:	xfce4-panel-devel >= 4.8.0
-BuildRequires:	hal-devel
 Requires:	usermode-consoleonly
 # (tpg) this satisfies xfce tips&tricks
 Suggests:	fortune-mod
