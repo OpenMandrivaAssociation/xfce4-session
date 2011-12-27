@@ -8,7 +8,7 @@
 Summary:	Xfce Session Manager
 Name:		xfce4-session
 Version:	4.8.2
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -17,6 +17,7 @@ Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.
 # http://bugzilla.xfce.org/show_bug.cgi?id=5912
 Patch0:		xfce4-session-4.6.1-fix_gnome_keyring_support.patch
 Patch1:		xfce4-session-4.7.0-reuse-existing-ConsoleKit-sessions.patch
+Patch2:		xfce4-session-4.8.2-force-xfsettingsd-start.patch
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	libx11-devel
 BuildRequires:	libice-devel
@@ -82,6 +83,7 @@ Libraries and header files for the Xfce Session Manager.
 %setup -q
 #%patch0 -p1
 #%patch1 -p1
+%patch2 -p1
 
 %build
 %configure2_5x \
@@ -103,7 +105,11 @@ rm -f %{buildroot}%{_libdir}/xfce4/splash/engines/*.*a
 rm -rf %{buildroot}%{_sysconfdir}/xdg/autostart/xfce4-tips-autostart.desktop
 rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
 
-%find_lang %{name}
+# (tpg) drop libtool files
+rm -rf %{buildroot}%{_libdir}/*.la
+rm -rf %{buildroot}%{_libdir}/*.a
+
+%find_lang %{name} %{name}.lang
 
 %clean
 rm -rf %{buildroot}
@@ -141,6 +147,5 @@ rm -rf %{buildroot}
 %files -n %{develname}
 %defattr(-,root,root)
 %{_libdir}/lib*.so
-%{_libdir}/*.la
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/xfce4/xfce4-session-%{apiver}
