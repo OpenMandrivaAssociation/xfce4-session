@@ -1,4 +1,4 @@
-%define url_ver %(echo %{version} | cut -c 1-3)
+%define url_ver %(echo %{version} | cut -d. -f1,2)
 
 %define major 0
 %define apiver 4.6
@@ -8,7 +8,7 @@
 Summary:	Xfce Session Manager
 Name:		xfce4-session
 Version:	4.8.2
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -18,6 +18,8 @@ Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.
 Patch0:		xfce4-session-4.6.1-fix_gnome_keyring_support.patch
 Patch1:		xfce4-session-4.7.0-reuse-existing-ConsoleKit-sessions.patch
 Patch2:		xfce4-session-4.8.2-force-xfsettingsd-start.patch
+Patch3:		xfce4-session-4.8.2-respect-SaveOnExit-option.patch
+Patch4:		xfce4-session-4.8.2-fix-linking.patch
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	libx11-devel
 BuildRequires:	libice-devel
@@ -84,14 +86,20 @@ Libraries and header files for the Xfce Session Manager.
 #%patch0 -p1
 #%patch1 -p1
 %patch2 -p1
+%patch3 -p1
+%patch4 -p1
 
 %build
+# (tpg) needed for patch3
+NOCONFIGURE=1 xdt-autogen
+
 %configure2_5x \
 	--enable-gnome \
 	--enable-session-screenshots \
 	--enable-legacy-sm \
 	--enable-libgnome-keyring \
 	--disable-static
+
 %make
 
 %install
