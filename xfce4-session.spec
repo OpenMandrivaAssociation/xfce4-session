@@ -37,6 +37,7 @@ Buildrequires:	xfconf-devel >= 4.7.0
 BuildRequires:	libgnome-keyring-devel >= 2.22
 BuildRequires:	consolekit-devel
 BuildRequires:	xfce4-panel-devel >= 4.8.0
+BuildConflicts:	hal-devel
 Requires:	usermode-consoleonly
 # (tpg) this satisfies xfce tips&tricks
 Suggests:	fortune-mod
