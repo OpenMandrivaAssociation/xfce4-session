@@ -19,7 +19,6 @@ Patch0:		xfce4-session-4.6.1-fix_gnome_keyring_support.patch
 Patch1:		xfce4-session-4.7.0-reuse-existing-ConsoleKit-sessions.patch
 Patch2:		xfce4-session-4.8.2-force-xfsettingsd-start.patch
 Patch3:		xfce4-session-4.8.2-respect-SaveOnExit-option.patch
-Patch4:		xfce4-session-4.8.2-fix-linking.patch
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	libx11-devel
 BuildRequires:	libice-devel
@@ -88,7 +87,6 @@ Libraries and header files for the Xfce Session Manager.
 #%patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 
 %build
 # (tpg) needed for patch3
