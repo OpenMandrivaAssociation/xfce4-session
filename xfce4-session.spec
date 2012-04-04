@@ -13,12 +13,6 @@ License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
-# (tpg) fix gnome-keyring support
-# http://bugzilla.xfce.org/show_bug.cgi?id=5912
-Patch0:		xfce4-session-4.6.1-fix_gnome_keyring_support.patch
-Patch1:		xfce4-session-4.7.0-reuse-existing-ConsoleKit-sessions.patch
-Patch2:		xfce4-session-4.8.2-force-xfsettingsd-start.patch
-Patch3:		xfce4-session-4.8.2-respect-SaveOnExit-option.patch
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	libx11-devel
 BuildRequires:	libice-devel
@@ -39,7 +33,7 @@ BuildRequires:	xfce4-panel-devel >= 4.9.1
 BuildConflicts:	hal-devel
 Requires:	usermode-consoleonly
 # (tpg) this satisfies xfce tips&tricks
-Suggests:	fortune-mod
+#Suggests:	fortune-mod
 Requires:	polkit-gnome
 Requires(pre):	mandriva-xfce-config
 Requires(post):	mandriva-xfce-config
@@ -83,14 +77,8 @@ Libraries and header files for the Xfce Session Manager.
 
 %prep
 %setup -q
-#%patch0 -p1
-#%patch1 -p1
-#%patch2 -p1
-#%patch3 -p1
 
 %build
-# (tpg) needed for patch3
-#NOCONFIGURE=1 xdt-autogen
 
 %configure2_5x \
 	--enable-legacy-sm \
@@ -102,9 +90,6 @@ Libraries and header files for the Xfce Session Manager.
 %install
 %makeinstall_std
 
-# Remove devel files from plugins
-#rm -f %{buildroot}%{_libdir}/xfce4/splash/engines/*.*a
-
 # (tpg) this file is in mandriva-xfce-config package
 rm -rf %{buildroot}%{_sysconfdir}/xdg/autostart/xfce4-tips-autostart.desktop
 rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
@@ -113,12 +98,6 @@ mkdir -p %{buildroot}%{_sysconfdir}/X11/dm/Sessions
 mv -f %{buildroot}%{_datadir}/xsessions/xfce.desktop %{buildroot}%{_sysconfdir}/X11/dm/Sessions/xfce.desktop
 
 %find_lang %{name} %{name}.lang
-
-%post
-%make_dm_session
-
-%postun
-%make_dm_session
 
 %files -f %{name}.lang
 %doc AUTHORS BUGS ChangeLog NEWS README TODO
@@ -130,14 +109,9 @@ mv -f %{buildroot}%{_datadir}/xsessions/xfce.desktop %{buildroot}%{_sysconfdir}/
 %{_sysconfdir}/xdg/xfce4/Xft.xrdb
 %{_sysconfdir}/xdg/xfce4/xinitrc
 %{_sysconfdir}/X11/dm/Sessions/xfce.desktop
-#/usr/share/xsessions/xfce.desktop
-
 %{_bindir}/*
 %{_datadir}/applications/xfce*
 %{_iconsdir}/hicolor/*/apps/*
-#%{_datadir}/xfce4/tips/tips
-#%{_datadir}/xfce4/panel-plugins/xfsm-*.desktop
-#%{_libdir}/xfce4/panel/plugins/libxfsm-*
 %{_libdir}/xfce4/session/splash-engines/libmice.*
 %{_libdir}/xfce4/session/splash-engines/libsimple.*
 %{_libdir}/xfce4/session/xfsm-shutdown-helper
