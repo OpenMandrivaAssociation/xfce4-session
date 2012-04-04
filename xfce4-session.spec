@@ -7,8 +7,8 @@
 
 Summary:	Xfce Session Manager
 Name:		xfce4-session
-Version:	4.8.3
-Release:	%mkrel 1
+Version:	4.9.0
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -28,14 +28,14 @@ BuildRequires:	dbus-glib-devel
 BuildRequires:	libGConf2-devel
 # (tpg) for patch 6
 BuildRequires:	intltool
-BuildRequires:	libxfce4ui-devel >= 4.8.0
-BuildRequires:	libxfce4util-devel >= 4.8.0
+BuildRequires:	libxfce4ui-devel >= 4.9.1
+BuildRequires:	libxfce4util-devel >= 4.9.0
 BuildRequires:	libwnck-devel
-Buildrequires:	xfconf-devel >= 4.7.0
+Buildrequires:	xfconf-devel >= 4.9.0
 # (tpg) needed by patch 9
 BuildRequires:	libgnome-keyring-devel >= 2.22
 BuildRequires:	consolekit-devel
-BuildRequires:	xfce4-panel-devel >= 4.8.0
+BuildRequires:	xfce4-panel-devel >= 4.9.1
 BuildConflicts:	hal-devel
 Requires:	usermode-consoleonly
 # (tpg) this satisfies xfce tips&tricks
@@ -45,7 +45,7 @@ Requires(pre):	mandriva-xfce-config
 Requires(post):	mandriva-xfce-config
 Requires:	%{libname} = %{version}-%{release}
 Obsoletes:	xfce-session < 4.5.91
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
+Obsoletes:	xfce-utils <= 4.8.3-1
 
 %description
 The session manager allows the user to save sessions and
@@ -85,16 +85,14 @@ Libraries and header files for the Xfce Session Manager.
 %setup -q
 #%patch0 -p1
 #%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+#%patch2 -p1
+#%patch3 -p1
 
 %build
 # (tpg) needed for patch3
-NOCONFIGURE=1 xdt-autogen
+#NOCONFIGURE=1 xdt-autogen
 
 %configure2_5x \
-	--enable-gnome \
-	--enable-session-screenshots \
 	--enable-legacy-sm \
 	--enable-libgnome-keyring \
 	--disable-static
@@ -102,44 +100,50 @@ NOCONFIGURE=1 xdt-autogen
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 # Remove devel files from plugins
-rm -f %{buildroot}%{_libdir}/xfce4/splash/engines/*.*a
+#rm -f %{buildroot}%{_libdir}/xfce4/splash/engines/*.*a
 
 # (tpg) this file is in mandriva-xfce-config package
 rm -rf %{buildroot}%{_sysconfdir}/xdg/autostart/xfce4-tips-autostart.desktop
 rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
 
-# (tpg) drop libtool files
-rm -rf %{buildroot}%{_libdir}/*.la
-rm -rf %{buildroot}%{_libdir}/*.a
+mkdir -p %{buildroot}%{_sysconfdir}/X11/dm/Sessions
+mv -f %{buildroot}%{_datadir}/xsessions/xfce.desktop %{buildroot}%{_sysconfdir}/X11/dm/Sessions/xfce.desktop
 
 %find_lang %{name} %{name}.lang
 
-%clean
-rm -rf %{buildroot}
+%post
+%make_dm_session
+
+%postun
+%make_dm_session
 
 %files -f %{name}.lang
-%defattr(-,root,root)
 %doc AUTHORS BUGS ChangeLog NEWS README TODO
 %doc doc/FAQ doc/README.Kiosk
 %dir %{_datadir}/themes
 %dir %{_datadir}/themes/Default
+
+%{_sysconfdir}/xdg/autostart/xscreensaver.desktop
+%{_sysconfdir}/xdg/xfce4/Xft.xrdb
+%{_sysconfdir}/xdg/xfce4/xinitrc
+%{_sysconfdir}/X11/dm/Sessions/xfce.desktop
+#/usr/share/xsessions/xfce.desktop
+
 %{_bindir}/*
 %{_datadir}/applications/xfce*
 %{_iconsdir}/hicolor/*/apps/*
-%{_datadir}/xfce4/tips/tips
-%{_datadir}/xfce4/panel-plugins/xfsm-*.desktop
-%{_libdir}/xfce4/panel/plugins/libxfsm-*
+#%{_datadir}/xfce4/tips/tips
+#%{_datadir}/xfce4/panel-plugins/xfsm-*.desktop
+#%{_libdir}/xfce4/panel/plugins/libxfsm-*
 %{_libdir}/xfce4/session/splash-engines/libmice.*
 %{_libdir}/xfce4/session/splash-engines/libsimple.*
 %{_libdir}/xfce4/session/xfsm-shutdown-helper
 %{_mandir}/man1/*
 
 %files engines
-%defattr(-,root,root)
 %dir %{_datadir}/themes/Default/balou
 %{_libdir}/xfce4/session/balou-export-theme
 %{_libdir}/xfce4/session//balou-install-theme
@@ -148,11 +152,9 @@ rm -rf %{buildroot}
 %{_datadir}/themes/Default/balou/themerc
 
 %files -n %{libname}
-%defattr(-,root,root)
 %{_libdir}/*%{apiver}.so.%{major}*
 
 %files -n %{develname}
-%defattr(-,root,root)
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/xfce4/xfce4-session-%{apiver}
