@@ -8,7 +8,7 @@
 Summary:	Xfce Session Manager
 Name:		xfce4-session
 Version:	4.9.0
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -39,7 +39,7 @@ Requires(pre):	mandriva-xfce-config
 Requires(post):	mandriva-xfce-config
 Requires:	%{libname} = %{version}-%{release}
 Obsoletes:	xfce-session < 4.5.91
-Obsoletes:	xfce-utils <= 4.8.3-1
+%rename	xfce-utils
 
 %description
 The session manager allows the user to save sessions and
