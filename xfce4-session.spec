@@ -119,7 +119,6 @@ install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/xfce4
 %{_sysconfdir}/xdg/autostart/xscreensaver.desktop
 %{_sysconfdir}/xdg/xfce4/Xft.xrdb
 %{_sysconfdir}/xdg/xfce4/xinitrc
-%{_sysconfdir}/X11/dm/Sessions/xfce.desktop
 %{_bindir}/*
 %{_datadir}/applications/xfce*
 %{_iconsdir}/hicolor/*/apps/*
