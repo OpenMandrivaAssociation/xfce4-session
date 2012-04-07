@@ -8,11 +8,14 @@
 Summary:	Xfce Session Manager
 Name:		xfce4-session
 Version:	4.9.0
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
+Source1:	06Xfce
+Source2:	xfce4.pam
+Patch0:		xfce4-session-4.9.0-xinitrc.patch
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	libx11-devel
 BuildRequires:	libice-devel
@@ -77,9 +80,9 @@ Libraries and header files for the Xfce Session Manager.
 
 %prep
 %setup -q
+%patch0 -p1 -b .set
 
 %build
-
 %configure2_5x \
 	--enable-legacy-sm \
 	--enable-libgnome-keyring \
@@ -94,8 +97,14 @@ Libraries and header files for the Xfce Session Manager.
 rm -rf %{buildroot}%{_sysconfdir}/xdg/autostart/xfce4-tips-autostart.desktop
 rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
 
-mkdir -p %{buildroot}%{_sysconfdir}/X11/dm/Sessions
-mv -f %{buildroot}%{_datadir}/xsessions/xfce.desktop %{buildroot}%{_sysconfdir}/X11/dm/Sessions/xfce.desktop
+# session
+mkdir -p %{buildroot}%{_sysconfdir}/X11/wmsession.d
+install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/X11/wmsession.d
+
+# pam
+mkdir -p %{buildroot}%{_sysconfdir}/pam.d
+install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/xfce4
+
 
 %find_lang %{name} %{name}.lang
 
@@ -105,6 +114,8 @@ mv -f %{buildroot}%{_datadir}/xsessions/xfce.desktop %{buildroot}%{_sysconfdir}/
 %dir %{_datadir}/themes
 %dir %{_datadir}/themes/Default
 
+%{_sysconfdir}/X11/wmsession.d/06Xfce
+%{_sysconfdir}/pam.d/xfce4
 %{_sysconfdir}/xdg/autostart/xscreensaver.desktop
 %{_sysconfdir}/xdg/xfce4/Xft.xrdb
 %{_sysconfdir}/xdg/xfce4/xinitrc
@@ -115,6 +126,7 @@ mv -f %{buildroot}%{_datadir}/xsessions/xfce.desktop %{buildroot}%{_sysconfdir}/
 %{_libdir}/xfce4/session/splash-engines/libmice.*
 %{_libdir}/xfce4/session/splash-engines/libsimple.*
 %{_libdir}/xfce4/session/xfsm-shutdown-helper
+%{_datadir}/xsessions/xfce.desktop
 %{_mandir}/man1/*
 
 %files engines
