@@ -24,15 +24,15 @@ BuildRequires:	iceauth
 BuildRequires:	dbus-glib-devel
 BuildRequires:	libGConf2-devel
 # (tpg) for patch 6
-BuildRequires:	intltool
-BuildRequires:	libxfce4ui-devel >= 4.9.1
-BuildRequires:	libxfce4util-devel >= 4.9.0
+BuildRequires:	intltoo0
+BuildRequires:	libxfce4ui-devel >= 4.10.1
+BuildRequires:	libxfce4util-devel >= 4.10.0
 BuildRequires:	libwnck-devel
-Buildrequires:	xfconf-devel >= 4.9.0
+Buildrequires:	xfconf-devel >= 4.10.0
 # (tpg) needed by patch 9
 BuildRequires:	libgnome-keyring-devel >= 2.22
 BuildRequires:	consolekit-devel
-BuildRequires:	xfce4-panel-devel >= 4.9.1
+BuildRequires:	xfce4-panel-devel >= 4.10.0
 BuildConflicts:	hal-devel
 Requires:	usermode-consoleonly
 # (tpg) this satisfies xfce tips&tricks
