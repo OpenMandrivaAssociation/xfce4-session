@@ -24,8 +24,8 @@ BuildRequires:	iceauth
 BuildRequires:	dbus-glib-devel
 BuildRequires:	libGConf2-devel
 # (tpg) for patch 6
-BuildRequires:	intltoo0
-BuildRequires:	libxfce4ui-devel >= 4.10.1
+BuildRequires:	intltool
+BuildRequires:	libxfce4ui-devel >= 4.10.0
 BuildRequires:	libxfce4util-devel >= 4.10.0
 BuildRequires:	libwnck-devel
 Buildrequires:	xfconf-devel >= 4.10.0
