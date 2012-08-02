@@ -8,7 +8,7 @@
 Summary:	Xfce Session Manager
 Name:		xfce4-session
 Version:	4.10.0
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -16,6 +16,9 @@ Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.
 Source1:	06Xfce
 Source2:	xfce4.pam
 Patch0:		xfce4-session-4.9.0-xinitrc.patch
+# (tpg) https://bugzilla.xfce.org/show_bug.cgi?id=8729
+# below is a rediffed patch
+Patch1:		xfce4-session-4.10.0-add-systemd-support.patch
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	libx11-devel
 BuildRequires:	libice-devel
@@ -31,7 +34,12 @@ BuildRequires:	libwnck-devel
 Buildrequires:	xfconf-devel >= 4.10.0
 # (tpg) needed by patch 9
 BuildRequires:	libgnome-keyring-devel >= 2.22
+%if %mdvver >= 2001200
+BuildRequires:	pkgconfig(libsystemd-login)
+BuildRequires:	pkgconfig(polkit-gobject-1)
+%else
 BuildRequires:	consolekit-devel
+%endif
 BuildRequires:	xfce4-panel-devel >= 4.10.0
 BuildConflicts:	hal-devel
 Requires:	usermode-consoleonly
@@ -81,10 +89,21 @@ Libraries and header files for the Xfce Session Manager.
 %prep
 %setup -q
 %patch0 -p1 -b .set
+%if %mdvver >= 2001200
+%patch1 -p1 -b .systemd
+%endif
 
 %build
+#(tpg) this is needed for patch 1 which enables systemd support
+%if %mdvver >= 2001200
+xdt-autogen
+%endif
+
 %configure2_5x \
 	--enable-legacy-sm \
+	%if %mdvver >= 2001200
+	--enable-systemd \
+	%endif
 	--enable-libgnome-keyring \
 	--disable-static
 
