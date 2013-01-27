@@ -19,6 +19,10 @@ Patch0:		xfce4-session-4.9.0-xinitrc.patch
 # (tpg) https://bugzilla.xfce.org/show_bug.cgi?id=8729
 # below is a rediffed patch
 Patch1:		xfce4-session-4.10.0-add-systemd-support.patch
+Patch2:		xfce4-session-4.10.0-remove-gnome-keyring-remains.patch
+Patch3:		xfce4-session-4.10.0-fix--fast-action.patch
+Patch4:		xfce4-session-4.10.0-handle-multiple-interactive-session-save.patch
+Patch5:		xfce4-session-4.10.0-fix-duplicated-accelerators.patch
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	libx11-devel
 BuildRequires:	libice-devel
@@ -32,8 +36,6 @@ BuildRequires:	libxfce4ui-devel >= 4.10.0
 BuildRequires:	libxfce4util-devel >= 4.10.0
 BuildRequires:	libwnck-devel
 Buildrequires:	xfconf-devel >= 4.10.0
-# (tpg) needed by patch 9
-BuildRequires:	libgnome-keyring-devel >= 2.22
 BuildRequires:	pkgconfig(libsystemd-login)
 BuildRequires:	pkgconfig(polkit-gobject-1)
 BuildRequires:	xfce4-panel-devel >= 4.10.0
@@ -42,8 +44,8 @@ Requires:	usermode-consoleonly
 # (tpg) this satisfies xfce tips&tricks
 #Suggests:	fortune-mod
 Requires:	polkit-gnome
-#Requires(pre):	mandriva-xfce-config
-#Requires(post):	mandriva-xfce-config
+Requires(pre):	mandriva-xfce-config
+Requires(post):	mandriva-xfce-config
 Requires:	%{libname} = %{version}
 Obsoletes:	xfce-session < 4.5.91
 %rename	xfce-utils
@@ -84,17 +86,18 @@ Libraries and header files for the Xfce Session Manager.
 
 %prep
 %setup -q
-%patch0 -p1 -b .set
-%patch1 -p1 -b .systemd
+%apply_patches
 
 %build
+# (tpg) for new automake
+sed -i -e 's,AM_CONFIG_HEADER,AC_CONFIG_HEADERS,g' configure.*
+
 #(tpg) this is needed for patch 1 which enables systemd support
-xdt-autogen
+NOCONFIGURE=yes xdt-autogen
 
 %configure2_5x \
 	--enable-legacy-sm \
 	--enable-systemd \
-	--enable-libgnome-keyring \
 	--disable-static
 
 %make
