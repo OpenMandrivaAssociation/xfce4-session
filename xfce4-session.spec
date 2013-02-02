@@ -131,7 +131,6 @@ install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/xfce4
 %{_sysconfdir}/xdg/autostart/*.desktop
 %{_sysconfdir}/xdg/xfce4/Xft.xrdb
 %{_sysconfdir}/xdg/xfce4/xinitrc
-%config(noreplace) %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
 %{_bindir}/*
 %{_datadir}/applications/xfce*
 %{_iconsdir}/hicolor/*/apps/*
