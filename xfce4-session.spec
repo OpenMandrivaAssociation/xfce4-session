@@ -24,12 +24,12 @@ Patch3:		xfce4-session-4.10.0-fix--fast-action.patch
 Patch4:		xfce4-session-4.10.0-handle-multiple-interactive-session-save.patch
 Patch5:		xfce4-session-4.10.0-fix-duplicated-accelerators.patch
 BuildRequires:	perl(XML::Parser)
-BuildRequires:	libx11-devel
+BuildRequires:	pkgconfig(x11)
 BuildRequires:	libice-devel
 BuildRequires:	libsm-devel
 BuildRequires:	iceauth
 BuildRequires:	dbus-glib-devel
-BuildRequires:	libGConf2-devel
+BuildRequires:	pkgconfig(gconf-2.0)
 # (tpg) for patch 6
 BuildRequires:	intltool
 BuildRequires:	libxfce4ui-devel >= 4.10.0
