@@ -25,8 +25,8 @@ Patch4:		xfce4-session-4.10.0-handle-multiple-interactive-session-save.patch
 Patch5:		xfce4-session-4.10.0-fix-duplicated-accelerators.patch
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	pkgconfig(x11)
-BuildRequires:	libice-devel
-BuildRequires:	libsm-devel
+BuildRequires:	pkgconfig(ice)
+BuildRequires:	pkgconfig(sm)
 BuildRequires:	iceauth
 BuildRequires:	dbus-glib-devel
 BuildRequires:	pkgconfig(gconf-2.0)
@@ -35,7 +35,7 @@ BuildRequires:	intltool
 BuildRequires:	libxfce4ui-devel >= 4.10.0
 BuildRequires:	libxfce4util-devel >= 4.10.0
 BuildRequires:	libwnck-devel
-Buildrequires:	xfconf-devel >= 4.10.0
+BuildRequires:	xfconf-devel >= 4.10.0
 BuildRequires:	pkgconfig(libsystemd-login)
 BuildRequires:	pkgconfig(polkit-gobject-1)
 BuildRequires:	xfce4-panel-devel >= 4.10.0
