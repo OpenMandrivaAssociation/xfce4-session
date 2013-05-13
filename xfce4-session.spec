@@ -16,7 +16,6 @@ Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.
 Source1:	06Xfce
 Source2:	xfce4.pam
 Patch0:		xfce4-session-4.9.0-xinitrc.patch
-Patch1:		xfce4-session-4.10.0-remove-gnome-keyring-remains.patch
 Patch3:		xfce4-session-4.10.0-fix--fast-action.patch
 Patch4:		xfce4-session-4.10.0-handle-multiple-interactive-session-save.patch
 Patch5:		xfce4-session-4.10.0-fix-duplicated-accelerators.patch
