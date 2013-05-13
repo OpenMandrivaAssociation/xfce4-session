@@ -25,14 +25,12 @@ BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(ice)
 BuildRequires:	pkgconfig(sm)
 BuildRequires:	iceauth
-BuildRequires:	dbus-glib-devel
+BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	pkgconfig(gconf-2.0)
-# (tpg) for patch 6
-BuildRequires:	intltool
-BuildRequires:	libxfce4ui-devel >= 4.10.0
-BuildRequires:	libxfce4util-devel >= 4.10.0
-BuildRequires:	libwnck-devel
-BuildRequires:	xfconf-devel >= 4.10.0
+BuildRequires:	pkgconfig(libxfce4ui-1) >= 4.10.0
+BuildRequires:	pkgconfig(libxfce4util-1.0) >= 4.10.1
+BuildRequires:	pkgconfig(libwnck-1.0)
+BuildRequires:	pkgconfig(libxfconf-0) >= 4.10.0
 BuildRequires:	pkgconfig(libsystemd-login)
 BuildRequires:	pkgconfig(polkit-gobject-1)
 BuildRequires:	xfce4-panel-devel >= 4.10.0
@@ -86,12 +84,6 @@ Libraries and header files for the Xfce Session Manager.
 %apply_patches
 
 %build
-# (tpg) for new automake
-sed -i -e 's,AM_CONFIG_HEADER,AC_CONFIG_HEADERS,g' configure.*
-
-#(tpg) this is needed for patch 1 which enables systemd support
-NOCONFIGURE=yes xdt-autogen
-
 %configure2_5x \
 	--enable-legacy-sm \
 	--enable-systemd \
