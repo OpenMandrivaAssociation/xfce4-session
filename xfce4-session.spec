@@ -7,8 +7,8 @@
 
 Summary:	Xfce Session Manager
 Name:		xfce4-session
-Version:	4.10.0
-Release:	7
+Version:	4.10.1
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -17,9 +17,6 @@ Source1:	06Xfce
 Source2:	xfce4.pam
 Patch0:		xfce4-session-4.9.0-xinitrc.patch
 Patch1:		xfce4-session-4.10.0-remove-gnome-keyring-remains.patch
-# (tpg) https://bugzilla.xfce.org/show_bug.cgi?id=8729
-# below is a rediffed patch
-Patch2:		xfce4-session-4.10.0-add-systemd-support.patch
 Patch3:		xfce4-session-4.10.0-fix--fast-action.patch
 Patch4:		xfce4-session-4.10.0-handle-multiple-interactive-session-save.patch
 Patch5:		xfce4-session-4.10.0-fix-duplicated-accelerators.patch
@@ -116,7 +113,6 @@ install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/X11/wmsession.d
 # pam
 mkdir -p %{buildroot}%{_sysconfdir}/pam.d
 install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/xfce4
-
 
 %find_lang %{name} %{name}.lang
 
