@@ -32,7 +32,7 @@ BuildRequires:	pkgconfig(libwnck-1.0)
 BuildRequires:	pkgconfig(libxfconf-0) >= 4.10.0
 BuildRequires:	pkgconfig(libsystemd-login)
 BuildRequires:	pkgconfig(polkit-gobject-1)
-BuildRequires:	xfce4-panel-devel >= 4.10.0
+BuildRequires:	pkgconfig(libxfce4panel-1.0) >= 4.10.0
 BuildConflicts:	hal-devel
 Requires:	usermode-consoleonly
 # (tpg) this satisfies xfce tips&tricks
