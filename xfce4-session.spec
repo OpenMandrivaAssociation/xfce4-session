@@ -8,7 +8,7 @@
 Summary:	Xfce Session Manager
 Name:		xfce4-session
 Version:	4.10.1
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -17,6 +17,7 @@ Source1:	06Xfce
 Source2:	xfce4.pam
 Patch0:		xfce4-session-4.9.0-xinitrc.patch
 Patch5:		xfce4-session-4.10.0-fix-duplicated-accelerators.patch
+Patch6:		xfce4-session-4.10.1-add-systemd-support.patch
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(ice)
@@ -82,6 +83,7 @@ Libraries and header files for the Xfce Session Manager.
 
 %build
 %serverbuild_hardened
+NOCONFIGURE=1 xdt-autogen
 
 %configure2_5x \
 	--enable-legacy-sm \
