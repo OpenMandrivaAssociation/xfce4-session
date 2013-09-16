@@ -1,7 +1,7 @@
 diff --git a/configure.ac.in b/configure.ac.in
 index 46ff366..8feee0b 100644
---- a/configure.ac.in
-+++ b/configure.ac.in
+--- a/configure.ac
++++ b/configure.ac
 @@ -98,7 +98,7 @@ XDT_CHECK_PACKAGE([XFCONF], [libxfconf-0], [4.9.0])
  
  dnl Check for polkit / systemd integration
