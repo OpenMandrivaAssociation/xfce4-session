@@ -16,7 +16,6 @@ Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.
 Source1:	06Xfce
 Source2:	xfce4.pam
 Patch0:		xfce4-session-4.9.0-xinitrc.patch
-Patch5:		xfce4-session-4.10.0-fix-duplicated-accelerators.patch
 # (tpg) https://bugzilla.xfce.org/show_bug.cgi?id=9952
 Patch6:		xfce4-session-4.10.1-add-systemd-support.patch
 BuildRequires:	perl(XML::Parser)
