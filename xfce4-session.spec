@@ -8,7 +8,7 @@
 Summary:	Xfce Session Manager
 Name:		xfce4-session
 Version:	4.11.0
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -37,8 +37,8 @@ Requires:	usermode-consoleonly
 # (tpg) this satisfies xfce tips&tricks
 #Suggests:	fortune-mod
 Requires:	polkit-gnome
-Requires(pre):	mandriva-xfce-config
-Requires(post):	mandriva-xfce-config
+Requires(pre):	distro-xfce-config-common
+Requires(post):	distro-xfce-config-common
 Requires:	%{libname} = %{version}
 Obsoletes:	xfce-session < 4.5.91
 %rename	xfce-utils
