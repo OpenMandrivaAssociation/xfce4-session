@@ -8,7 +8,7 @@
 Summary:	Xfce Session Manager
 Name:		xfce4-session
 Version:	4.11.0
-Release:	3
+Release:	4
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -85,7 +85,7 @@ Libraries and header files for the Xfce Session Manager.
 %serverbuild_hardened
 NOCONFIGURE=1 xdt-autogen
 
-%configure2_5x \
+%configure \
 	--enable-legacy-sm \
 	--enable-systemd \
 	--disable-static
