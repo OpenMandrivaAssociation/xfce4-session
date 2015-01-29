@@ -7,8 +7,8 @@
 
 Summary:	Xfce Session Manager
 Name:		xfce4-session
-Version:	4.11.0
-Release:	4
+Version:	4.11.1
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
