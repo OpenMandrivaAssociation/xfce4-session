@@ -112,13 +112,13 @@ install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/xfce4
 %doc doc/FAQ doc/README.Kiosk
 %dir %{_datadir}/themes
 %dir %{_datadir}/themes/Default
-
 %{_sysconfdir}/X11/wmsession.d/06Xfce
 %{_sysconfdir}/pam.d/xfce4
 %{_sysconfdir}/xdg/autostart/*.desktop
 %{_sysconfdir}/xdg/xfce4/Xft.xrdb
 %{_sysconfdir}/xdg/xfce4/xinitrc
 %{_bindir}/*
+%{_datadir}/polkit-1/actions/org.xfce.session.policy
 %{_datadir}/applications/xfce*
 %{_iconsdir}/hicolor/*/apps/*
 %{_libdir}/xfce4/session/splash-engines/libmice.*
