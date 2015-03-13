@@ -7,8 +7,8 @@
 
 Summary:	Xfce Session Manager
 Name:		xfce4-session
-Version:	4.11.1
-Release:	2
+Version:	4.12.0
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -23,13 +23,13 @@ BuildRequires:	pkgconfig(sm)
 BuildRequires:	iceauth
 BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	pkgconfig(gconf-2.0)
-BuildRequires:	pkgconfig(libxfce4ui-1) >= 4.11
-BuildRequires:	pkgconfig(libxfce4util-1.0) >= 4.11
+BuildRequires:	pkgconfig(libxfce4ui-1) >= 4.12
+BuildRequires:	pkgconfig(libxfce4util-1.0) >= 4.12
 BuildRequires:	pkgconfig(libwnck-1.0)
-BuildRequires:	pkgconfig(libxfconf-0) >= 4.10.0
+BuildRequires:	pkgconfig(libxfconf-0) >= 4.12
 BuildRequires:	pkgconfig(libsystemd-login)
 BuildRequires:	pkgconfig(polkit-gobject-1)
-BuildRequires:	pkgconfig(libxfce4panel-1.0) >= 4.11
+BuildRequires:	pkgconfig(libxfce4panel-1.0) >= 4.12
 BuildConflicts:	hal-devel
 Requires:	usermode-consoleonly
 # (tpg) this satisfies xfce tips&tricks
@@ -80,7 +80,6 @@ Libraries and header files for the Xfce Session Manager.
 %apply_patches
 
 %build
-%serverbuild_hardened
 NOCONFIGURE=1 xdt-autogen
 
 %configure \
