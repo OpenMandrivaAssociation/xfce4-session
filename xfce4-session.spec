@@ -7,8 +7,8 @@
 
 Summary:	Xfce Session Manager
 Name:		xfce4-session
-Version:	4.11.0
-Release:	4
+Version:	4.12.0
+Release:	0.1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -16,8 +16,6 @@ Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.
 Source1:	06Xfce
 Source2:	xfce4.pam
 Patch0:		xfce4-session-4.9.0-xinitrc.patch
-# (tpg) https://bugzilla.xfce.org/show_bug.cgi?id=9952
-Patch6:		xfce4-session-4.10.1-add-systemd-support.patch
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(ice)
@@ -25,13 +23,13 @@ BuildRequires:	pkgconfig(sm)
 BuildRequires:	iceauth
 BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	pkgconfig(gconf-2.0)
-BuildRequires:	pkgconfig(libxfce4ui-1) >= 4.11
-BuildRequires:	pkgconfig(libxfce4util-1.0) >= 4.11
+BuildRequires:	pkgconfig(libxfce4ui-1) >= 4.12
+BuildRequires:	pkgconfig(libxfce4util-1.0) >= 4.12
 BuildRequires:	pkgconfig(libwnck-1.0)
-BuildRequires:	pkgconfig(libxfconf-0) >= 4.10.0
+BuildRequires:	pkgconfig(libxfconf-0) >= 4.12
 BuildRequires:	pkgconfig(libsystemd-login)
 BuildRequires:	pkgconfig(polkit-gobject-1)
-BuildRequires:	pkgconfig(libxfce4panel-1.0) >= 4.11
+BuildRequires:	pkgconfig(libxfce4panel-1.0) >= 4.12
 BuildConflicts:	hal-devel
 Requires:	usermode-consoleonly
 # (tpg) this satisfies xfce tips&tricks
@@ -82,7 +80,6 @@ Libraries and header files for the Xfce Session Manager.
 %apply_patches
 
 %build
-%serverbuild_hardened
 NOCONFIGURE=1 xdt-autogen
 
 %configure2_5x \
@@ -114,13 +111,13 @@ install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/xfce4
 %doc doc/FAQ doc/README.Kiosk
 %dir %{_datadir}/themes
 %dir %{_datadir}/themes/Default
-
 %{_sysconfdir}/X11/wmsession.d/06Xfce
 %{_sysconfdir}/pam.d/xfce4
 %{_sysconfdir}/xdg/autostart/*.desktop
 %{_sysconfdir}/xdg/xfce4/Xft.xrdb
 %{_sysconfdir}/xdg/xfce4/xinitrc
 %{_bindir}/*
+%{_datadir}/polkit-1/actions/org.xfce.session.policy
 %{_datadir}/applications/xfce*
 %{_iconsdir}/hicolor/*/apps/*
 %{_libdir}/xfce4/session/splash-engines/libmice.*
