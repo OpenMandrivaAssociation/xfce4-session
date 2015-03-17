@@ -22,7 +22,7 @@ BuildRequires:	pkgconfig(sm)
 BuildRequires:	iceauth
 BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	pkgconfig(gconf-2.0)
-BuildRequires:	pkgconfig(libxfce4ui-1) >= 4.12
+BuildRequires:	pkgconfig(libxfce4ui-1) >= 4.12.1
 BuildRequires:	pkgconfig(libxfce4util-1.0) >= 4.12
 BuildRequires:	pkgconfig(libwnck-1.0)
 BuildRequires:	pkgconfig(libxfconf-0) >= 4.12
