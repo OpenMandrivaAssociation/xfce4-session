@@ -1,6 +1,0 @@
-NAME=xfce4
-ICON=xfce4-logo
-DESC=Xfce4 Desktop Environment
-EXEC=/usr/bin/startxfce4
-SCRIPT:
-exec /usr/bin/startxfce4
