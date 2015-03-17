@@ -8,12 +8,11 @@
 Summary:	Xfce Session Manager
 Name:		xfce4-session
 Version:	4.12.0
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
-Source1:	06Xfce
 Source2:	xfce4.pam
 Patch0:		xfce4-session-4.9.0-xinitrc.patch
 BuildRequires:	perl(XML::Parser)
@@ -96,10 +95,6 @@ NOCONFIGURE=1 xdt-autogen
 rm -rf %{buildroot}%{_sysconfdir}/xdg/autostart/xfce4-tips-autostart.desktop
 rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
 
-# session
-mkdir -p %{buildroot}%{_sysconfdir}/X11/wmsession.d
-install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/X11/wmsession.d
-
 # pam
 mkdir -p %{buildroot}%{_sysconfdir}/pam.d
 install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/xfce4
@@ -111,7 +106,6 @@ install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/xfce4
 %doc doc/FAQ doc/README.Kiosk
 %dir %{_datadir}/themes
 %dir %{_datadir}/themes/Default
-%{_sysconfdir}/X11/wmsession.d/06Xfce
 %{_sysconfdir}/pam.d/xfce4
 %{_sysconfdir}/xdg/autostart/*.desktop
 %{_sysconfdir}/xdg/xfce4/Xft.xrdb
