@@ -2,13 +2,15 @@
 
 %define major 0
 %define apiver 4.6
-%define libname %mklibname xfsm-%{apiver}_%{major}
+%define libname %mklibname xfsm- %{apiver} %{major}
 %define develname %mklibname xfsm -d
+
+%define _disable_rebuild_configure 1
 
 Summary:	Xfce Session Manager
 Name:		xfce4-session
 Version:	4.12.1
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -26,7 +28,7 @@ BuildRequires:	pkgconfig(libxfce4ui-1) >= 4.12.1
 BuildRequires:	pkgconfig(libxfce4util-1.0) >= 4.12
 BuildRequires:	pkgconfig(libwnck-1.0)
 BuildRequires:	pkgconfig(libxfconf-0) >= 4.12
-BuildRequires:	pkgconfig(libsystemd-login)
+BuildRequires:	pkgconfig(libsystemd)
 BuildRequires:	pkgconfig(polkit-gobject-1)
 BuildRequires:	pkgconfig(libxfce4panel-1.0) >= 4.12
 BuildConflicts:	hal-devel
@@ -60,6 +62,7 @@ Summary:	Libraries for the Xfce Session Manager
 Group:		Graphical desktop/Xfce
 Obsoletes:	%mklibname xfsm-%{apiver}0
 Obsoletes:	%{mklibname xfsm-4.2 0}
+Obsoletes:	%{_lib}xfsm-4.6_0_
 
 %description -n %{libname}
 Libraries for xfce-session manager.
