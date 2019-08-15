@@ -132,7 +132,7 @@ install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/xfce4
 #{_datadir}/themes/Default/balou/themerc
 
 %files -n %{libname}
-%{_libdir}/*%{apiver}.so.%{major}*
+#{_libdir}/*%{apiver}.so.%{major}*
 
 %files -n %{develname}
 %{_libdir}/lib*.so
