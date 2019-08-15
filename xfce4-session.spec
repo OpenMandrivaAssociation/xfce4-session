@@ -16,7 +16,6 @@ Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
 Source2:	xfce4.pam
-Patch0:		xfce4-session-4.9.0-xinitrc.patch
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(ice)
