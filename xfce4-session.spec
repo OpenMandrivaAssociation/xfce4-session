@@ -35,7 +35,6 @@ Requires:	usermode-consoleonly
 Requires:	polkit-gnome
 Requires(pre):	distro-xfce-config-common
 Requires(post):	distro-xfce-config-common
-Requires:	%{libname} = %{version}
 Obsoletes:	xfce-session < 4.5.91
 %rename	xfce-utils
 
