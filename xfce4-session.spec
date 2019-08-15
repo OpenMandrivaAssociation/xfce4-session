@@ -135,6 +135,6 @@ install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/xfce4
 #{_libdir}/*%{apiver}.so.%{major}*
 
 %files -n %{develname}
-%{_libdir}/lib*.so
-%{_libdir}/pkgconfig/*.pc
-%{_includedir}/xfce4/xfce4-session-%{apiver}
+#{_libdir}/lib*.so
+#{_libdir}/pkgconfig/*.pc
+#{_includedir}/xfce4/xfce4-session-%{apiver}
