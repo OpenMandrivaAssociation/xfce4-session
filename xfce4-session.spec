@@ -20,16 +20,17 @@ BuildRequires:	perl(XML::Parser)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(ice)
 BuildRequires:	pkgconfig(sm)
+BuildRequires:	pkgconfig(systemd)
 BuildRequires:	iceauth
 BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	pkgconfig(gconf-2.0)
-BuildRequires:	pkgconfig(libxfce4ui-1)
+BuildRequires:	pkgconfig(libxfce4ui-2)
 BuildRequires:	pkgconfig(libxfce4util-1.0)
+BuildRequires:  pkgconfig(libxfce4panel-2.0)
 BuildRequires:	pkgconfig(libwnck-3.0)
 BuildRequires:	pkgconfig(libxfconf-0)
 BuildRequires:	pkgconfig(libsystemd)
 BuildRequires:	pkgconfig(polkit-gobject-1)
-BuildRequires:	pkgconfig(libxfce4panel-1.0)
 BuildConflicts:	hal-devel
 Requires:	usermode-consoleonly
 # (tpg) this satisfies xfce tips&tricks
@@ -123,12 +124,12 @@ install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/xfce4
 %{_mandir}/man1/*
 
 %files engines
-%dir %{_datadir}/themes/Default/balou
-%{_libdir}/xfce4/session/balou-export-theme
-%{_libdir}/xfce4/session//balou-install-theme
-%{_libdir}/xfce4/session/splash-engines/libbalou.*
-%{_datadir}/themes/Default/balou/logo.png
-%{_datadir}/themes/Default/balou/themerc
+#dir #{_datadir}/themes/Default/balou
+#{_libdir}/xfce4/session/balou-export-theme
+#{_libdir}/xfce4/session//balou-install-theme
+#{_libdir}/xfce4/session/splash-engines/libbalou.*
+#{_datadir}/themes/Default/balou/logo.png
+#{_datadir}/themes/Default/balou/themerc
 
 %files -n %{libname}
 %{_libdir}/*%{apiver}.so.%{major}*
