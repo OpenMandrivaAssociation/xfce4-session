@@ -106,8 +106,8 @@ install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/xfce4
 %files -f %{name}.lang
 %doc AUTHORS BUGS ChangeLog NEWS README TODO
 %doc doc/FAQ doc/README.Kiosk
-%dir %{_datadir}/themes
-%dir %{_datadir}/themes/Default
+#dir #{_datadir}/themes
+#dir #{_datadir}/themes/Default
 %{_sysconfdir}/pam.d/xfce4
 %{_sysconfdir}/xdg/autostart/*.desktop
 %{_sysconfdir}/xdg/xfce4/Xft.xrdb
@@ -116,8 +116,8 @@ install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/xfce4
 %{_datadir}/polkit-1/actions/org.xfce.session.policy
 %{_datadir}/applications/xfce*
 %{_iconsdir}/hicolor/*/apps/*
-%{_libdir}/xfce4/session/splash-engines/libmice.*
-%{_libdir}/xfce4/session/splash-engines/libsimple.*
+#{_libdir}/xfce4/session/splash-engines/libmice.*
+#{_libdir}/xfce4/session/splash-engines/libsimple.*
 %{_libdir}/xfce4/session/xfsm-shutdown-helper
 %{_datadir}/xsessions/xfce.desktop
 %{_mandir}/man1/*
