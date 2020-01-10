@@ -46,7 +46,7 @@ And at last it helps you to log out, reboot, and shutdown the system.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %build
 NOCONFIGURE=1 xdt-autogen
