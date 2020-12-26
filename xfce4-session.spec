@@ -6,13 +6,16 @@
 
 Summary:	Xfce Session Manager
 Name:		xfce4-session
-Version:	4.14.2
+Version:	4.16.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
 Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
 Source2:	xfce4.pam
+
+BuildRequires:	intltool
+BuildRequires:	xfce4-dev-tools
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(ice)
@@ -33,6 +36,7 @@ Requires:	usermode-consoleonly
 # (tpg) this satisfies xfce tips&tricks
 #Suggests:	fortune-mod
 Requires:	polkit-gnome
+Requires:	mate-polkit
 Requires(pre):	distro-xfce-config-common
 Requires(post):	distro-xfce-config-common
 Obsoletes:	xfce-session < 4.5.91
@@ -49,7 +53,7 @@ And at last it helps you to log out, reboot, and shutdown the system.
 %autopatch -p1
 
 %build
-NOCONFIGURE=1 xdt-autogen
+NOCONFIGURE=1
 
 %configure \
 	--enable-legacy-sm \
@@ -72,7 +76,7 @@ install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/xfce4
 %find_lang %{name} %{name}.lang
 
 %files -f %{name}.lang
-%doc AUTHORS BUGS ChangeLog NEWS README TODO
+%doc AUTHORS BUGS ChangeLog NEWS README* TODO
 %doc doc/FAQ doc/README.Kiosk
 %{_sysconfdir}/pam.d/xfce4
 %{_sysconfdir}/xdg/autostart/*.desktop
