@@ -82,7 +82,7 @@ install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/xfce4
 %doc AUTHORS BUGS ChangeLog NEWS README* TODO
 %doc doc/FAQ doc/README.Kiosk
 %{_sysconfdir}/pam.d/xfce4
-#{_sysconfdir}/xdg/autostart/*.desktop
+%exclude %{_sysconfdir}/xdg/autostart/xdg/autostart/xscreensaver.desktop
 %{_sysconfdir}/xdg/xfce4/Xft.xrdb
 %{_sysconfdir}/xdg/xfce4/xinitrc
 %{_bindir}/*
