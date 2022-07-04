@@ -70,7 +70,7 @@ NOCONFIGURE=1
 rm -rf %{buildroot}%{_sysconfdir}/xdg/autostart/xfce4-tips-autostart.desktop
 rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
 # xscreensaver.desktop file is not provided by main xscreensaver. So to avaoid files conflicting let's drop it from here and add as dep.
-rm -rf %{buildroot}%{_sysconfdir}/xdg/autostart/xdg/autostart/xscreensaver.desktop
+rm -rf %{buildroot}%{_sysconfdir}/xdg/autostart/xscreensaver.desktop
 
 # pam
 mkdir -p %{buildroot}%{_sysconfdir}/pam.d
@@ -82,7 +82,6 @@ install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/xfce4
 %doc AUTHORS BUGS ChangeLog NEWS README* TODO
 %doc doc/FAQ doc/README.Kiosk
 %{_sysconfdir}/pam.d/xfce4
-%exclude %{_sysconfdir}/xdg/autostart/xdg/autostart/xscreensaver.desktop
 %{_sysconfdir}/xdg/xfce4/Xft.xrdb
 %{_sysconfdir}/xdg/xfce4/xinitrc
 %{_bindir}/*
