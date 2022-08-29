@@ -7,7 +7,7 @@
 Summary:	Xfce Session Manager
 Name:		xfce4-session
 Version:	4.16.0
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -35,8 +35,9 @@ BuildConflicts:	hal-devel
 Requires:	usermode-consoleonly
 # (tpg) this satisfies xfce tips&tricks
 #Suggests:	fortune-mod
-Requires:	polkit-gnome
-Requires:	mate-polkit
+#Requires:	polkit-gnome
+#Requires:	mate-polkit
+Requires:	xfce-polkit
 Requires:	xscreensaver
 Requires(pre):	distro-xfce-config-common
 Requires(post):	distro-xfce-config-common
