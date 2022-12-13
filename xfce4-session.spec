@@ -85,6 +85,7 @@ install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/xfce4
 %{_sysconfdir}/pam.d/xfce4
 %{_sysconfdir}/xdg/xfce4/Xft.xrdb
 %{_sysconfdir}/xdg/xfce4/xinitrc
+%{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
 %{_bindir}/*
 %{_datadir}/polkit-1/actions/org.xfce.session.policy
 %{_datadir}/applications/xfce*
