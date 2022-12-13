@@ -6,8 +6,8 @@
 
 Summary:	Xfce Session Manager
 Name:		xfce4-session
-Version:	4.16.0
-Release:	3
+Version:	4.17.2
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		http://www.xfce.org
@@ -39,8 +39,8 @@ Requires:	usermode-consoleonly
 #Requires:	mate-polkit
 Requires:	xfce-polkit
 Requires:	xscreensaver
-Requires(pre):	distro-xfce-config-common
-Requires(post):	distro-xfce-config-common
+#Requires(pre):	distro-xfce-config-common
+#Requires(post):	distro-xfce-config-common
 Obsoletes:	xfce-session < 4.5.91
 %rename	xfce-utils
 
@@ -68,8 +68,8 @@ NOCONFIGURE=1
 %make_install
 
 # (tpg) this file is in mandriva-xfce-config package
-rm -rf %{buildroot}%{_sysconfdir}/xdg/autostart/xfce4-tips-autostart.desktop
-rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
+#rm -rf %{buildroot}%{_sysconfdir}/xdg/autostart/xfce4-tips-autostart.desktop
+#rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
 # xscreensaver.desktop file is not provided by main xscreensaver. So to avaoid files conflicting let's drop it from here and add as dep.
 rm -rf %{buildroot}%{_sysconfdir}/xdg/autostart/xscreensaver.desktop
 
