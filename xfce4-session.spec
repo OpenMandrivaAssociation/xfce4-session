@@ -6,12 +6,12 @@
 
 Summary:	Xfce Session Manager
 Name:		xfce4-session
-Version:	4.18.3
+Version:	4.18.4
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
-URL:		http://www.xfce.org
-Source0:	http://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
+URL:		https://www.xfce.org
+Source0:	https://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
 Source2:	xfce4.pam
 
 BuildRequires:	intltool
