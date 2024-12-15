@@ -6,7 +6,7 @@
 
 Summary:	Xfce Session Manager
 Name:		xfce4-session
-Version:	4.18.4
+Version:	4.20.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
@@ -26,6 +26,7 @@ BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	pkgconfig(libxfce4ui-2)
 BuildRequires:	pkgconfig(libxfce4util-1.0)
 BuildRequires:  pkgconfig(libxfce4panel-2.0)
+BuildRequires:  pkgconfig(libxfce4windowing-0) >= 4.20.0
 BuildRequires:	pkgconfig(libwnck-3.0)
 BuildRequires:	pkgconfig(libxfconf-0)
 BuildRequires:	pkgconfig(libsystemd)
@@ -38,6 +39,8 @@ Requires:	usermode-consoleonly
 #Requires:	mate-polkit
 Requires:	xfce-polkit
 Requires:	xscreensaver
+Requires:	xdg-desktop-portal-gtk
+Requires:	xdg-desktop-portal-xapp
 #Requires(pre):	distro-xfce-config-common
 #Requires(post):	distro-xfce-config-common
 Obsoletes:	xfce-session < 4.5.91
@@ -50,8 +53,7 @@ different sessions. It comes with three splash screen engines.
 And at last it helps you to log out, reboot, and shutdown the system.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 NOCONFIGURE=1
@@ -69,6 +71,7 @@ NOCONFIGURE=1
 # (tpg) this file is in mandriva-xfce-config package
 #rm -rf %{buildroot}%{_sysconfdir}/xdg/autostart/xfce4-tips-autostart.desktop
 #rm -rf %{buildroot}%{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
+
 # xscreensaver.desktop file is not provided by main xscreensaver. So to avaoid files conflicting let's drop it from here and add as dep.
 rm -rf %{buildroot}%{_sysconfdir}/xdg/autostart/xscreensaver.desktop
 
@@ -79,7 +82,7 @@ install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/xfce4
 %find_lang %{name} %{name}.lang
 
 %files -f %{name}.lang
-%doc AUTHORS BUGS ChangeLog NEWS README* TODO
+%doc AUTHORS ChangeLog NEWS README*
 %doc doc/FAQ doc/README.Kiosk
 %{_sysconfdir}/pam.d/xfce4
 %{_sysconfdir}/xdg/xfce4/Xft.xrdb
@@ -88,6 +91,8 @@ install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/xfce4
 %{_bindir}/*
 %{_datadir}/xdg-desktop-portal/xfce-portals.conf
 %{_datadir}/polkit-1/actions/org.xfce.session.policy
+%{_datadir}/wayland-sessions/xfce-wayland.desktop
+%{_datadir}/xdg-desktop-portal/xfce-portals.conf
 %{_datadir}/applications/xfce*
 %{_iconsdir}/hicolor/*/*/*.{png,svg}
 %{_libdir}/xfce4/session/xfsm-shutdown-helper
