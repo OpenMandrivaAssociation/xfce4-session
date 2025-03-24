@@ -92,6 +92,8 @@ install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/xfce4
 %{_datadir}/polkit-1/actions/org.xfce.session.policy
 %{_datadir}/wayland-sessions/xfce-wayland.desktop
 %{_datadir}/xdg-desktop-portal/xfce-portals.conf
+%{_datadir}/xfce4/labwc/labwc-environment
+%{_datadir}/xfce4/labwc/labwc-rc.xml
 %{_datadir}/applications/xfce*
 %{_iconsdir}/hicolor/*/*/*.{png,svg}
 %{_libdir}/xfce4/session/xfsm-shutdown-helper
