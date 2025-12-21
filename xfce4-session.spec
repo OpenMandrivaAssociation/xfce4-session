@@ -7,7 +7,7 @@
 Summary:	Xfce Session Manager
 Name:		xfce4-session
 Version:	4.20.3
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/Xfce
 URL:		https://www.xfce.org
@@ -40,7 +40,7 @@ Requires:	usermode-consoleonly
 Requires:	xfce-polkit
 Requires:	xscreensaver
 Requires:	xdg-desktop-portal-gtk
-Requires:	xdg-desktop-portal-xapp
+Recommends:	xdg-desktop-portal-xapp
 #Requires(pre):	distro-xfce-config-common
 #Requires(post):	distro-xfce-config-common
 Obsoletes:	xfce-session < 4.5.91
