@@ -14,6 +14,9 @@ URL:		https://www.xfce.org
 Source0:	https://archive.xfce.org/src/xfce/%{name}/%{url_ver}/%{name}-%{version}.tar.bz2
 Source2:	xfce4.pam
 
+BuildRequires:	autoconf
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
 BuildRequires:	make
 BuildRequires:	automake
 BuildRequires:	libtool
